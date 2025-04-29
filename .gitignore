@@ -1,0 +1,28 @@
+.env
+node_modules
+
+#compiled Object files
+*.o
+*.obj
+*.so
+*.exe
+*.dll
+*.a
+
+#Folders
+_obj
+_test
+vendor/
+
+#Compiled Binaries
+*.exe
+*.out
+
+#MacOS Files
+.DS_Store
+
+#Go Specific Files
+#Compiled binaries for pkgs and cmds
+/bin/
+#Output of the go coverage tool in HTML format
+*.out

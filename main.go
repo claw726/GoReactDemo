@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	db "github.com/calaw726/GoReactDemo/db"
+	db "github.com/calaw726/GoReactDemo/db/sqlc"
 	"github.com/gofiber/fiber/v2"
 	UUID "github.com/google/uuid"
 	"github.com/joho/godotenv"

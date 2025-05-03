@@ -28,3 +28,5 @@ vendor/
 #Output of the go coverage tool in HTML format
 *.out
 .vscode/settings.json
+tmp/build-errors.log
+tmp/main

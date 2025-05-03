@@ -24,6 +24,7 @@ vendor/
 #Go Specific Files
 #Compiled binaries for pkgs and cmds
 /bin/
-tmp/
+/tmp/*
 #Output of the go coverage tool in HTML format
 *.out
+.vscode/settings.json

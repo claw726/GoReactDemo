@@ -8,6 +8,7 @@ import (
 
 	db "github.com/calaw726/GoReactDemo/db/sqlc"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	UUID "github.com/google/uuid"
 	"github.com/joho/godotenv"
 
@@ -142,6 +143,13 @@ func main() {
 	fmt.Println("Query object created successfully")
 
 	app := fiber.New()
+
+	if os.Getenv("ENV") != "production" {
+		app.Use(cors.New(cors.Config{
+			AllowOrigins: "http://localhost:5173",
+			AllowHeaders: "Origin, Content-Type, Accept",
+		}))
+	}
 
 	app.Get("/api/todos", getTodos)
 	app.Post("/api/todos", createTodo)

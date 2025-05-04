@@ -119,17 +119,19 @@ func deleteTodo(c *fiber.Ctx) error {
 }
 
 func main() {
-	fmt.Println("Hello, World!")
 
-	err := godotenv.Load(".env")
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "error loading .env file: %v", err)
-		os.Exit(1)
+	if os.Getenv("ENV") != "production" {
+		fmt.Println("Running in development mode")
+		err := godotenv.Load(".env")
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "error loading .env file: %v", err)
+			os.Exit(1)
+		}
 	}
 
 	ctx = context.Background()
 
-	err = NewPostgres()
+	err := NewPostgres()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
@@ -149,6 +151,10 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "5000"
+	}
+
+	if os.Getenv("ENV") == "production" {
+		app.Static("/", "./client/dist")
 	}
 
 	log.Fatal(app.Listen(":" + port))

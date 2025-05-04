@@ -20,7 +20,6 @@ const TodoList = () => {
                 if (!res.ok) {
                     throw new Error(data.error || "Could not fetch todos.");
                 }
-                console.log("Fetched todos:", data);
                 return data || [];
             } catch (error) {
                 console.error("Error fetching todos:", error);
